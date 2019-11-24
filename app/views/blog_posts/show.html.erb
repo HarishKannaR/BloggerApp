@@ -1,0 +1,42 @@
+<header>
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+  </video>
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 class="display-3"><%= @blog_post.title %></h1>
+        <p class="lead mb-0">-<%= @blog_post.user.first_name + " " + @blog_post.user.last_name %></p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <div class="col-md-8 mx-auto">
+          <p><%== @blog_post.description %></p>
+        </div>
+        <div class="col-md-4 mx-auto text-center align-items-center">
+          <% if policy(@blog_post).user_post? %>
+            <%= link_to 'Edit', edit_blog_post_path(@blog_post), class: "btn btn-primary" %>
+            <%= link_to 'Destroy', @blog_post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="detailBox">
+    <div class="titleBox">
+      <strong><%= @blog_post.comments.count %> Comments</strong>
+    </div>
+    <div class="actionBox">
+        <%= render partial: 'comments/comments' %>
+        <%= render 'comments/form' %>
+    </div>
+</div>

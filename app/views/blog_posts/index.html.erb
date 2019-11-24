@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row" style="margin-top: 15px;">
+    <%= link_to 'New Blog Post', new_blog_post_path, class: "btn btn-primary" %>
+  </div>
+  <br>
+  <% if @blog_posts.blank? %>
+    <div class="row">
+      <p>No posts to display.</p>
+    </div>
+  <% end %>
+  <div class="row">
+    <% @blog_posts.each do |blog_post| %>
+      <div class="card" style="width: 18rem; margin-right: 10px; padding: 10px;">
+        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="card-body">
+          <h5 class="card-title"><%= blog_post.title %></h5>
+          <p class="card-text"><%== blog_post.description %></p>
+          <%= link_to 'Read More...', blog_post, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

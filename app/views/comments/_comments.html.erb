@@ -1,0 +1,19 @@
+<ul class="commentList">
+  <% @blog_post.comments.each do |comment| %>
+    <li>
+        <div class="avatar-circle">
+          <span class="initials"><%= comment.user.first_name.split(//).first + comment.user.last_name.split(//).first %></span>
+        </div>
+        <div class="commentText">
+          <p class=""><%= comment.message %></p>
+          <span class="date sub-text">on <%= comment.created_at.strftime("%B %d, %Y")%></span>
+        </div>
+
+        <% if policy(comment).user_comment? %>
+          <div class="removeComment">
+            <%= link_to 'X'.html_safe, [comment.blog_post, comment], method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+    </li>
+  <% end %>
+</ul>
