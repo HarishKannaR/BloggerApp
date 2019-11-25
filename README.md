@@ -24,3 +24,6 @@ Things you may want to cover:
 
 * Database initialization
   * rails db:migrate
+
+* Test Suite
+  * run `bundle exec rspec/` to get your test suite results
