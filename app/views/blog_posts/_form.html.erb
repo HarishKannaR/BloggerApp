@@ -1,11 +1,12 @@
 <% if blog_post.errors.any? %>
-  <h2><%= pluralize(blog_post.errors.count, "error") %> prohibited this blog_post from being saved:</h2>
-
-  <ul>
-    <% blog_post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <div class="alert alert-danger">
+  <button type="button" class="close" data-dismiss="alert">x</button>
+    <ul>
+      <% blog_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <div class="row" style="margin-top: 15px;">
